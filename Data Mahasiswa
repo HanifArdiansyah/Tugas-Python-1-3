@@ -1,0 +1,65 @@
+def input_data_mahasiswa():
+    mahasiswa_list = []
+    n = int(input("Masukkan jumlah mahasiswa: "))
+    
+    for i in range(n):
+        print(f"Masukkan data mahasiswa ke-{i+1}:")
+        nama = input("Nama: ")
+        nim = input("NIM: ")
+        prodi = input("Prodi: ")
+        nilai = float(input("Nilai: "))
+        mahasiswa = {
+            "nama": nama,
+            "nim": nim,
+            "prodi": prodi,
+            "nilai": nilai
+        }
+        mahasiswa_list.append(mahasiswa)
+        
+    return mahasiswa_list
+
+def tampilkan_data_mahasiswa(mahasiswa_list):
+    for i, mahasiswa in enumerate(mahasiswa_list):
+        print(f"Mahasiswa ke-{i+1}:")
+        print(f"Nama  : {mahasiswa['nama']}")
+        print(f"NIM   : {mahasiswa['nim']}")
+        print(f"Prodi : {mahasiswa['prodi']}")
+        print(f"Nilai : {mahasiswa['nilai']}")
+        print()
+
+def hitung_rata_rata_nilai(mahasiswa_list):
+    if not mahasiswa_list:
+        print("Tidak ada data mahasiswa.")
+        return
+    
+    total_nilai = sum(mahasiswa['nilai'] for mahasiswa in mahasiswa_list)
+    rata_rata = total_nilai / len(mahasiswa_list)
+    print(f"Rata-rata nilai mahasiswa: {rata_rata:.2f}")
+
+def cari_mahasiswa_tertinggi_terendah(mahasiswa_list):
+    if not mahasiswa_list:
+        print("Tidak ada data mahasiswa.")
+        return
+
+    mahasiswa_tertinggi = max(mahasiswa_list, key=lambda x: x['nilai'])
+    mahasiswa_terendah = min(mahasiswa_list, key=lambda x: x['nilai'])
+
+    print("Mahasiswa dengan nilai tertinggi:")
+    print(f"Nama  : {mahasiswa_tertinggi['nama']}")
+    print(f"NIM   : {mahasiswa_tertinggi['nim']}")
+    print(f"Prodi : {mahasiswa_tertinggi['prodi']}")
+    print(f"Nilai : {mahasiswa_tertinggi['nilai']}")
+    print()
+
+    print("Mahasiswa dengan nilai terendah:")
+    print(f"Nama  : {mahasiswa_terendah['nama']}")
+    print(f"NIM   : {mahasiswa_terendah['nim']}")
+    print(f"Prodi : {mahasiswa_terendah['prodi']}")
+    print(f"Nilai : {mahasiswa_terendah['nilai']}")
+    print()
+
+# Main program
+mahasiswa_list = input_data_mahasiswa()
+tampilkan_data_mahasiswa(mahasiswa_list)
+hitung_rata_rata_nilai(mahasiswa_list)
+cari_mahasiswa_tertinggi_terendah(mahasiswa_list)
