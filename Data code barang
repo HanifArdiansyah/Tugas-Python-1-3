@@ -1,0 +1,69 @@
+def input_data_barang(inventory):
+    print("Masukkan data barang:")
+    nama_barang = input("Nama Barang: ")
+    kode_barang = input("Kode Barang: ")
+    jumlah_barang = int(input("Jumlah Barang: "))
+    barang = {
+        "nama_barang": nama_barang,
+        "kode_barang": kode_barang,
+        "jumlah_barang": jumlah_barang
+    }
+    inventory.append(barang)
+    print("Barang berhasil ditambahkan!\n")
+
+def tampilkan_data_barang(inventory):
+    if not inventory:
+        print("Inventaris kosong.")
+        return
+    for i, barang in enumerate(inventory):
+        print(f"Barang ke-{i+1}:")
+        print(f"Nama Barang   : {barang['nama_barang']}")
+        print(f"Kode Barang   : {barang['kode_barang']}")
+        print(f"Jumlah Barang : {barang['jumlah_barang']}")
+        print()
+
+def cari_barang_berdasarkan_kode(inventory, kode_barang):
+    for barang in inventory:
+        if barang["kode_barang"] == kode_barang:
+            print("Barang ditemukan:")
+            print(f"Nama Barang   : {barang['nama_barang']}")
+            print(f"Kode Barang   : {barang['kode_barang']}")
+            print(f"Jumlah Barang : {barang['jumlah_barang']}")
+            return
+    print("Barang dengan kode tersebut tidak ditemukan.")
+
+def hapus_barang_berdasarkan_kode(inventory, kode_barang):
+    for barang in inventory:
+        if barang["kode_barang"] == kode_barang:
+            inventory.remove(barang)
+            print("Barang berhasil dihapus.")
+            return
+    print("Barang dengan kode tersebut tidak ditemukan.")
+
+# Main program
+inventory = []
+
+while True:
+    print("Menu:")
+    print("1. Tambah Barang")
+    print("2. Tampilkan Semua Barang")
+    print("3. Cari Barang Berdasarkan Kode")
+    print("4. Hapus Barang Berdasarkan Kode")
+    print("5. Keluar")
+    pilihan = input("Pilih menu (1-5): ")
+    
+    if pilihan == '1':
+        input_data_barang(inventory)
+    elif pilihan == '2':
+        tampilkan_data_barang(inventory)
+    elif pilihan == '3':
+        kode = input("Masukkan kode barang yang dicari: ")
+        cari_barang_berdasarkan_kode(inventory, kode)
+    elif pilihan == '4':
+        kode = input("Masukkan kode barang yang akan dihapus: ")
+        hapus_barang_berdasarkan_kode(inventory, kode)
+    elif pilihan == '5':
+        print("Keluar dari program.")
+        break
+    else:
+        print("Pilihan tidak valid, silakan coba lagi.")
