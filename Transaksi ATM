@@ -1,0 +1,48 @@
+saldo = 1000000000
+
+print()
+print("pilih menu:")
+print("1. cek saldo \n2. isi saldo \n3. ambil uang \n4. transfer uang")
+print()
+
+plh = int(input("masukan pilihan :"))
+if plh == 1:
+    print("saldo yang anda miliki adalah Rp{}".format(saldo))
+    print("========================================")
+elif plh == 2:
+    print("isi saldo ")
+    nominal = int(input("masukan nominal (kelipatan 50.000) :"))
+    if nominal < 50000:
+        print("nominal kurang!")
+        print("========================================")
+    else:
+        proses = saldo + nominal
+        print("saldo anda berhasil diisi Rp{}".format(nominal))
+        print("total saldo anda adalah : Rp{}".format(proses))
+        print("========================================")
+    
+elif plh == 3:
+    print("ambil uang")
+    nominal = int(input("masukan nominal :"))
+    if nominal > 1000000000:
+        print("saldo anda tidak cukup")
+    else:
+        proses = saldo - nominal
+        print("saldo anda berhasil diambil Rp{}".format(nominal))
+        print("saldo sisa : Rp{}".format(proses))
+        print("========================================")
+        
+elif plh == 4:
+    print('Transfer uang!!!')
+    print("masukan tujuan")
+    nama = str(input("Nama            :"))
+    no = int(input("No Rekening     :"))
+    nominal = int(input("masukan nominal :"))
+    if nominal > 1000000000:
+        print("nominal yang anda masukan kurang")
+        print("========================================")
+    else:
+        proses = saldo - nominal
+        print("anda berhasil transfer ke {} sebesar Rp".format(nama) , nominal) 
+        print("saldo sisa anda adalah : Rp{}".format(proses))
+        print("========================================")
